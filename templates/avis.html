@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<br><br><br>
+
+<main id="main">
+    <br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Testimonials</h2>
+            <a href="{% url 'myapp:ecrireavis' %}" class="btn btn-danger">Laisser un avis</a>
+          </div>
+          <p class="my-4 p-3 bg-light border rounded">
+            Nous apprécierions grandement votre avis sur nos solutions. Votre opinion est très importante pour nous et nous aide à améliorer constamment notre service.
+          </p>
+        </div>
+      </section>
+      
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+          <div class="row">
+            {% for a in avis %}
+            <div class="col-lg-6">
+              <div class="testimonial-item">
+                <img src="{{ a.image.url }}" class="testimonial-img" alt="">
+                <h3>{{ a.nom }}</h3>
+                <h4>{{ a.service }}</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  {{ a.avis }}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section><!-- End Testimonials Section -->
+      
+  </main><!-- End #main -->
+
+{% endblock content %}

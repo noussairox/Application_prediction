@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<main id="main">
+<br><br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>About</h2>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+    <div class="container">
+
+      <div class="row content">
+        <div class="col-lg-6">
+          <h2>Ai Solution</h2>
+          <h3>Ai solution propose des services basés sur les techniques d'apprentissage automatique.</h3>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <p>
+              Nous avons conçu notre site web de manière à ce qu'il soit facile à utiliser.
+              Vous pourrez saisir les données requises pour obtenir une estimation précise des prévisions.
+              Nous avons également inclus des graphiques et des tableaux pour vous aider à visualiser les tendances et les prévisions.
+          </p>
+          <ul>
+            <li><i class="ri-check-double-line"></i> La prédiction des prix de vente des voitures d'occasion au Maroc</li>
+            <li><i class="ri-check-double-line"></i> La prédiction du taux de désabonnement des télécommunications</li>
+            <li><i class="ri-check-double-line"></i> Adapter des modèles de machine learning pour regler des problèmes quotidienne.</li>
+          </ul>
+          <p class="fst-italic">
+              Nous espérons que notre site web sera utile pour vous et nous sommes impatients de vous offrir des prévisions précises basées sur les techniques d'apprentissage automatique.
+
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Profil</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="static/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Abellouch Noussair</h4>
+                <span>Stagière</span>
+                <p>Lp ISIL</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Our Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Compétances</h2>
+        </div>
+        <div class="row skills-content">
+            {% for c in com %}
+            <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill">{{ c.nom }} <i class="val">{{ c.pourcentage }}%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ c.pourcentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          
+    </section><!-- End Our Skills Section -->
+
+  </main><!-- End #main -->
+  {% endblock content%}

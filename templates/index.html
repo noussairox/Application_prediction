@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+ <!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(static/img/slide/slide-1.jpg)">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ai Solution</span></h2>
+              <p class="animate__animated animate__fadeInUp">Nous sommes ravis de vous présenter notre site web qui vous offre des prévisions précises basées sur les techniques d'apprentissage automatique. Nous proposons deux services de prédiction qui pourront vous être utiles dans votre vie quotidienne.</p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(static/img/slide/slide-22.jpg)">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Prédiction des prix de vente des voitures d'occasion au Maroc</h2>
+              <p class="animate__animated animate__fadeInUp">Le service de prédiction vous permet d'obtenir une estimation précise du prix de vente des voitures d'occasion au Maroc. Si vous cherchez à acheter ou vendre une voiture, notre service peut vous aider à évaluer le juste prix de la voiture.</p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url(static/img/slide/slide-33.jpg)">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown"> la prédiction du taux de désabonnement des télécommunications</h2>
+              <p class="animate__animated animate__fadeInUp">service de prédiction est destiné aux entreprises de télécommunications. Nous pouvons vous aider à anticiper les comportements de vos clients et à prendre des mesures préventives pour éviter les désabonnements.</p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <h2>Ai Solution</h2>
+            <h3>Ai solution propose des services basés sur les techniques d'apprentissage automatique.</h3>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+                Nous avons conçu notre site web de manière à ce qu'il soit facile à utiliser.
+                Vous pourrez saisir les données requises pour obtenir une estimation précise des prévisions.
+                Nous avons également inclus des graphiques et des tableaux pour vous aider à visualiser les tendances et les prévisions.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> La prédiction des prix de vente des voitures d'occasion au Maroc</li>
+              <li><i class="ri-check-double-line"></i> La prédiction du taux de désabonnement des télécommunications</li>
+              <li><i class="ri-check-double-line"></i> Adapter des modèles de machine learning pour regler des problèmes quotidienne.</li>
+            </ul>
+            <p class="fst-italic">
+                Nous espérons que notre site web sera utile pour vous et nous sommes impatients de vous offrir des prévisions précises basées sur les techniques d'apprentissage automatique.
+
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="icon-box">
+                <i class="bi bi-code-slash"></i>
+              <h4><a href="#">Développement Web</a></h4>
+              <p>Nous offrent aussi une bonne intégration des modèles d'apprentissage en Web pour mieux faciliter la navigation</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+                <i class="bi bi-sliders"></i>
+              <h4><a href="#">Machine Learning</a></h4>
+              <p>Nous appliquons des algorithmes d'apprentissage automatique pour extraire des informations à partir de vos données et améliorer la précision de vos prévisions et décisions.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+                <i class="bi bi-robot"></i>
+              <h4><a href="#">Deep learning</a></h4>
+              <p>Nous utilisons des réseaux de neurones profonds pour résoudre des problèmes complexes tels que la reconnaissance d'image et de parole, la traduction automatique, etc.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+                <i class="bi bi-people"></i>
+              <h4><a href="#">Consultation</a></h4>
+              <p>Nous offrons des services de consultation personnalisés pour vous aider à élaborer des stratégies efficaces et à optimiser les performances de votre entreprise.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+                <i class="bi bi-phone"></i>
+              <h4><a href="#">Développement mobile</a></h4>
+              <p>Nous créons des applications mobiles natives et hybrides pour iOS et Android qui répondent aux normes les plus élevées en matière de design et de fonctionnalité.</p>
+            </div>
+          </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+  </main><!-- End #main --> 
+
+  
+{% endblock content%}

@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<br><br><br>
+
+<main id="main">
+    <br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="text-center text-danger">Voiture d'occasion Maroc Dataset</h2>
+        </div>
+      </section>
+      
+    <!-- End Breadcrumbs -->
+      <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h2>La répartition des marque du dataset</h2>
+                        <img src="static/img/graph/first_graph.png" alt="Graphique" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section">
+                        <h2>Répartition des types de carburant</h2>
+                        <div class="graph-container">
+                            <h3>Graphique 1</h3>
+                            <img src="static/img/graph/graph2.png" alt="Graphique 1" class="img-responsive">
+                        </div>
+                        <div class="graph-container">
+                            <h3>Graphique 2</h3>
+                            <img src="static/img/graph/graph3.png" alt="Graphique 2" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section">
+                        <h2 class="text-primary">La corrélation entre le prix des voitures et l'année du modèle</h2>
+                        <p>La corrélation entre le prix des voitures et l'année du modèle peut aider à expliquer l'évolution des prix des voitures au fil du temps.</p>
+                        <div id="graph-container4">
+                            {% include 'graph/graph4.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h2>la corrélation entre la marque et le prix</h2>
+                        <img src="static/img/graph/graph5.png" alt="Graphique" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h2>la corrélation entre le prix et le Type de carburant</h2>
+                        <img src="static/img/graph/graph6.png" alt="Graphique" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+
+            <div class="row">
+                <h2>la relation entre le Kilométrage et le Prix</h2>
+
+                <div class="col-md-6 mb-4">
+                  <div class="solution-card">
+                    <div class="row align-items-center">
+                        <img src="static/img/graph/graph7.png" alt="Solution 1" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/graph8.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+
+            <div class="row">
+                <h2>Autre graph analytique</h2>
+
+                <div class="col-md-6 mb-4">
+                  <div class="solution-card">
+                    <div class="row align-items-center">
+                        <img src="static/img/graph/graph9.png" alt="Solution 1" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/graph10.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/graph11.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/graph12.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </section>
+  </main><!-- End #main -->
+{% endblock content %}
+

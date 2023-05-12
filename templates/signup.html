@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content%}
+<main id="main">
+    <br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="text-center text-danger">Devenir Client</h2>
+        </div>
+      </section>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 bg-danger text-white welcome-section">
+                <h3 class="text-center mt-4">Welcome to Sign Up</h3>
+                <div class="text-center mt-4">
+                    <p>Déjà inscrit?</p>
+                </div>
+                <a class="btn btn-primary btn-lg mt-0" href="{% url 'login' %}">Login</a>
+
+                </div>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <!-- {{ form.as_p }} -->
+                            {% include "bs5_form.html" with form=form %}
+                            <div class="mt-3">
+                                <button class="btn btn-primary" type="submit">Sign Up</button>
+                                <a class="btn btn-secondary" href="{% url 'myapp:index' %}">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<style>
+.container {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-body {
+  border-radius: 10px;
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 10px 10px 18px 18px;
+  background: linear-gradient(to top, #dc3545 50%, #000 50%);
+  color: #fff;
+}
+
+.welcome-section h3 {
+  font-size: 36px;
+  margin: 8px;
+}
+
+.welcome-section a {
+  border-radius: 20px;
+  background-color: blue;
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 18px;
+  margin-top: 10px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-section a:hover {
+  background-color: #c30000;
+}
+
+
+</style>
+
+    </main>
+    <br>
+{% endblock content%}

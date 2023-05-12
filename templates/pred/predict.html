@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction</title>
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+ <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+</head>
+<body>
+    <style>
+        .navbar-username {
+          margin-right: 10px;
+          padding: 4px;
+          color :whitesmoke;
+          font-style: oblique;
+        }
+        .navbar-nav p{
+            margin: 3px;
+            padding: 5px;
+            color: aliceblue;
+        }
+      </style>
+      
+      <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="#" class="img-thumbnail" width="100px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Prédiction de prix d'occassion</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Prédiction de désabonnement des client</a>
+              </li>
+            </ul>
+            <div class="navbar-nav">
+                <p >Bienvenue</p>
+              <span class="navbar-username fs-5">{{ user }}</span>
+              <li class="nav-item">
+                <a class="nav-link btn btn-primary modal-fullscreen-lg-down" href="#">Logout</a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <section class="mt-5">
+          <h1 class="text-danger text-center fst-italic">Avis</h1>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header text-center">Ecrire Un Avis</div>
+                  <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {% include "bs5_form.html" with form=form %}
+                      <br>
+                      <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+        
+</body>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</html>

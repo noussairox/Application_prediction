@@ -1,0 +1,39 @@
+<!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><i class="bi bi-code"></i><a href="index.html">Ai Solution</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'myapp:index' %}" class="active">Home</a></li>
+
+          <li><a href="{% url 'myapp:about' %}"><span>About</span></a>
+          </li>
+          <li><a href="{% url 'myapp:service' %}">Services</a></li>
+          <li><a href="{% url 'myapp:solution' %}">Solution</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Analytique
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'myapp:voiture' %}">Voiture d'occassion .</a>
+              <a class="dropdown-item" href="{% url 'myapp:telecommunication' %}">désabonnement des télécommunications .</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Blog</a></li>
+          <li><a href="{% url 'myapp:avis' %}">Avis</a></li>
+
+          <li><a href="{% url 'myapp:contact' %}">Contact</a></li>
+          <li>
+            <a href="{% url 'myapp:signup' %}" class="insription"><i class="bi bi-box-arrow-in-right"></i>Inscription</a></li>
+          <li>
+            <a href="{% url 'login' %}" class="login"><i class="bi bi-person-plus"></i>Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<br><br><br>
+
+<main id="main">
+    <br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="text-center text-danger">Désabonnement des télécommunications</h2>
+        </div>
+      </section>
+    <!-- End Breadcrumbs -->
+      <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h2>la corrélation de "Désabonnement" avec d'autres variables</h2>
+                        <img src="static/img/graph/graph01.png" alt="Graphique" class="img-responsive"><br><br>
+                        <p>Le passage suggère que les contrats mensuels, l'absence de sécurité en ligne et de support technique sont positivement corrélés avec la perte de clients, ce qui signifie que les clients ayant ces caractéristiques ont plus de chances d'arrêter d'utiliser les produits ou services de l'entreprise. En revanche, les longues durées de service et les contrats de deux ans sont négativement corrélés avec la perte de clients, indiquant que les clients ayant ces caractéristiques ont moins de chances de partir.
+
+                            Le passage note également que certains services spécifiques, tels que la sécurité en ligne, la télévision en streaming, la sauvegarde en ligne et le support technique sans connexion Internet, sont négativement liés à la perte de clients. Cela suggère que les clients qui utilisent ces services ont moins de chances de partir par rapport à ceux qui ne les utilisent pas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <h2 class="text-primary">1) Les poids de toutes les variables Avec l'algorithme :Régression logistique</h2>
+
+                <div class="col-md-6 mb-4">
+                  <div class="solution-card">
+                    <div class="row align-items-center">
+                        <img src="static/img/graph/weights_graph1.png" alt="Solution 1" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/bottom_weights_graph1.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="description">
+                <p>Vous pouvez estimer les poids de chaque variable en fonction de leur contribution à la prédiction de la variable cible. Chaque poids indique l'importance relative de la variable dans le modèle. Les variables ayant des poids plus élevés sont considérées comme ayant une influence plus significative sur la variable cible.</p>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <h2 class="text-primary" >2) Les poids de toutes les variables Avec l'algorithme :Random Forest</h2>
+
+                <div class="col-md-6 mb-4">
+                  <div class="solution-card">
+                    <div class="row align-items-center">
+                        <img src="static/img/graph/importances_graph_Rf.png" alt="Solution 1" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/bottom_importances_graph_Rf.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="description">
+                <p>Vous pouvez estimer les poids de chaque variable en fonction de leur contribution à la prédiction de la variable cible. Chaque poids indique l'importance relative de la variable dans le modèle. Les variables ayant des poids plus élevés sont considérées comme ayant une influence plus significative sur la variable cible.</p>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <h2 class="text-primary" >3) Les poids de toutes les variables Avec l'algorithme :Support Vecor Machine</h2>
+
+                <div class="col-md-6 mb-4">
+                  <div class="solution-card">
+                    <div class="row align-items-center">
+                        <img src="static/img/graph/top_importances_graph_SVM.png" alt="Solution 1" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="solution-card">
+                      <div class="row align-items-center">
+                          <img src="static/img/graph/bottom_importances_graph_SVM.png" alt="Solution 1" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="description">
+                <p>Vous pouvez estimer les poids de chaque variable en fonction de leur contribution à la prédiction de la variable cible. Chaque poids indique l'importance relative de la variable dans le modèle. Les variables ayant des poids plus élevés sont considérées comme ayant une influence plus significative sur la variable cible.</p>
+            </div>
+        </div>
+      </section>
+  </main><!-- End #main -->
+{% endblock content %}
+
