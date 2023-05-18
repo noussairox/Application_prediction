@@ -2,7 +2,8 @@
 import joblib
 import os
 from sklearn.preprocessing import LabelEncoder
-
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 # Définir le chemin vers le dossier contenant les modèles
 MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Models')
@@ -67,3 +68,42 @@ def predict(form_data):
 
     return predictions
 
+def make_churn_prediction(input_values):
+    # Chargement des modèles
+    model_lr = joblib.load(os.path.join(MODELS_DIR, 'LogisticRegression_churn_.pkl'))
+    model_rf = joblib.load(os.path.join(MODELS_DIR, 'RandomForest_churn_.pkl'))
+    model_svm = joblib.load(os.path.join(MODELS_DIR, 'SupportVectorMachine_churn_.pkl'))
+
+    # Chargement des données d'entraînement
+    training_data = pd.read_csv(os.path.join(MODELS_DIR, 'training_data.csv'))
+    # Sélection des colonnes pour X
+    selected_columns = ['TotalCharges', 'Contract_Month-to-month', 'InternetService_Fiber optic',
+                        'PaymentMethod_Electronic check', 'TechSupport_No', 'OnlineSecurity_No',
+                        'SeniorCitizen', 'PaperlessBilling_Yes', 'StreamingTV_Yes', 'StreamingMovies_Yes',
+                        'tenure', 'Contract_Two year', 'InternetService_DSL', 'MultipleLines_No',
+                        'PaperlessBilling_No', 'PaymentMethod_Credit card (automatic)',
+                        'TechSupport_Yes', 'OnlineSecurity_Yes', 'PhoneService_Yes', 'Dependents_Yes']
+
+    X_train = training_data[selected_columns]
+    y_train = training_data['Churn'].values
+
+    # Scaling des données
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    scaler.fit(X_train)
+    input_values_scaled = scaler.transform([input_values])
+
+    # Prédiction avec les modèles
+    prediction_lr = model_lr.predict(input_values_scaled)[0]
+    prediction_rf = model_rf.predict(input_values_scaled)[0]
+    prediction_svm = model_svm.predict(input_values_scaled)[0]
+
+    # Conversion des prédictions en texte
+    churn_predictions = {
+        0: 'No churn',
+        1: 'Churn'
+    }
+    prediction_lr_text = churn_predictions[prediction_lr]
+    prediction_rf_text = churn_predictions[prediction_rf]
+    prediction_svm_text = churn_predictions[prediction_svm]
+
+    return prediction_lr_text, prediction_rf_text, prediction_svm_text

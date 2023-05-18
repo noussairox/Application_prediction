@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main id="main">
+    <br><br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Blog</h2>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+</main>
+
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-8 entries">
+                {% for a in articles %}
+                <article class="entry">
+
+                    <div class="entry-img">
+                      <img src="{{a.image.url}}" alt="" class="img-fluid">
+                    </div>
+        
+                    <h2 class="entry-title">
+                      <a href="blog-single.html">{{a.titre}}</a>
+                    </h2>
+        
+                    <div class="entry-meta">
+                      <ul>
+                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{a.author}}</a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{a.date_creation}}</time></a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                      </ul>
+                    </div>
+        
+                    <div class="entry-content">
+                      <p>
+                        {{a.content}}
+                      </p>
+                      <div class="read-more">
+                        <a href="{% url 'myapp:article' slug=a.slug %}">Read More</a>
+                      </div>
+                    </div>
+        
+                  </article><!-- End blog entry -->
+                {% endfor %}
+            </div><!-- End blog entries list -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Search</h3>
+                    <div class="sidebar-item search-form">
+                        <form action="">
+                            <input type="text">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                          </form>
+                    </div><!-- End sidebar search formn-->
+
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="sidebar-item categories">
+                        {% for category in categories_with_count %}
+                        <ul>
+                            <li>
+                                <a href="#">{{ category.category }} <span>({{ category.post_count }})</span></a>
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </div><!-- End sidebar categories-->
+
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    <div class="sidebar-item recent-posts">
+                        {% for ar in articles_ordered %}
+                        <div class="post-item clearfix">
+                            <img src="{{ar.image.url}}" alt="">
+                            <h4><a href="blog-single.html">{{ar.titre}}</a></h4>
+                            <time datetime="2020-01-01">{{ar.date_creation}}</time>
+                        </div>
+                        {% endfor %}
+                    </div><!-- End sidebar recent posts-->
+                </div><!-- End sidebar -->
+            </div><!-- End blog sidebar -->
+        </div>
+    </div>
+</section><!-- End Blog Section -->
+{% endblock content %}

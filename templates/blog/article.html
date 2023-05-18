@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main id="main">
+    <br><br><br>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Article</h2>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+</main>
+
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog">
+    <div class="container">
+        <div class="row justify-content-center"> <!-- Modifier la classe row pour centrer l'article -->
+
+            <div class="col-lg-8 entries">
+                <article class="entry">
+
+                    <div class="entry-img">
+                      <img src="{{article.image.url}}" alt="" class="img-fluid">
+                    </div>
+
+                    <h2 class="entry-title" style="margin-top: 10px;"> <!-- Ajouter une marge supérieure pour rapprocher le titre de l'image -->
+                      <a href="blog-single.html">{{article.titre}}</a>
+                    </h2>
+
+                    <div class="entry-meta">
+                      <ul>
+                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{article.author}}</a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{article.date_creation}}</time></a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="entry-content">
+                      <p>
+                        {{article.content}}
+                      </p>
+                    </div>
+
+                  </article><!-- End blog entry -->
+            </div><!-- End col-lg-8 entries -->
+
+        </div><!-- End row -->
+    </div><!-- End container -->
+</section><!-- End Blog Section -->
+{% endblock content %}

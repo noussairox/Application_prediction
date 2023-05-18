@@ -1,12 +1,15 @@
-from django.shortcuts import render ,redirect
+from django.shortcuts import render ,redirect,get_object_or_404
 from .forms import DemandeForm,AvisForm ,PredictionForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm,ChurnPredictionForm
 from django.urls import reverse
 from django.contrib.auth.views import PasswordResetConfirmView
-from .models import Competance,Avis
-from .utils import predict
+from .models import Competance,Avis,Article
+from .utils import predict,make_churn_prediction
+from django.views.generic import DetailView
+from django.db.models import Count
+
 
 # Create your views here.
 def  index(request):
@@ -74,8 +77,73 @@ def prediction_view(request):
             data = form.cleaned_data
             predictions = predict(data)  # Transmettre le dictionnaire des données
             print(predictions)
-            return render(request, 'result.html', {'predictions': predictions})
+            return render(request, 'pred/result.html', {'predictions': predictions})
     else:
         form = PredictionForm()
 
     return render(request, 'pred/predict.html', {'form': form})
+
+
+def churn_prediction_view(request):
+    if request.method == 'POST':
+        form = ChurnPredictionForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            # Préparer les données d'entrée pour la prédiction
+            input_values = [
+                data['TotalCharges'],
+                data['Contract_Month_to_month'],
+                data['InternetService_Fiber_optic'],
+                data['PaymentMethod_Electronic_check'],
+                data['TechSupport_No'],
+                data['OnlineSecurity_No'],
+                data['SeniorCitizen'],
+                data['PaperlessBilling_Yes'],
+                data['StreamingTV_Yes'],
+                data['StreamingMovies_Yes'],
+                data['tenure'],
+                data['Contract_Two_year'],
+                data['InternetService_DSL'],
+                data['MultipleLines_No'],
+                data['PaperlessBilling_No'],
+                data['PaymentMethod_Credit_card'],
+                data['TechSupport_Yes'],
+                data['OnlineSecurity_Yes'],
+                data['PhoneService_Yes'],
+                data['Dependents_Yes']
+            ]
+
+            # Appeler la fonction de prédiction
+            prediction_lr, prediction_rf, prediction_svm = make_churn_prediction(input_values)
+
+            # Préparer les données à afficher dans le template
+            context = {
+                'form':form,
+                'prediction_lr': prediction_lr,
+                'prediction_rf': prediction_rf,
+                'prediction_svm': prediction_svm
+            }
+
+            return render(request, 'pred/resultchurn.html', context)
+    else:
+        form = ChurnPredictionForm()
+
+    return render(request, 'pred/predictchurn.html', {'form': form})
+
+class ArticleDetailView(DetailView):
+    model = Article
+    template_name = "blog/article.html"
+    context_object_name = "article"
+    slug_url_kwarg = 'slug'
+
+def blog(request):
+    categories_with_count = Article.objects.values('category').annotate(post_count=Count('id'))
+    context = {'articles':Article.objects.all(),
+               'articles_ordered':Article.objects.order_by('-date_creation'),
+               'categories_with_count': categories_with_count}
+    return render(request, "blog/articles.html", context)
+
+def article(request,slug):
+    article = get_object_or_404(Article, slug=slug)
+    return render(request,"blog/article.html",{'article':article})

@@ -50,3 +50,28 @@ class PredictionForm(forms.Form):
     CD_MP3_Bluetooth = forms.BooleanField(required=False, initial=False)
     Ordinateur_de_bord = forms.BooleanField(required=False, initial=False)
     Verrouillage_centralise_a_distance = forms.BooleanField(required=False, initial=False)
+
+
+
+
+class ChurnPredictionForm(forms.Form):
+    TotalCharges = forms.DecimalField(label='Total Charges')
+    tenure = forms.DecimalField(label='Tenure')
+    Contract_Month_to_month = forms.ChoiceField(label='Contract (Month-to-Month)', choices=[(0, 'No'), (1, 'Yes')])
+    InternetService_Fiber_optic = forms.ChoiceField(label='Internet Service (Fiber Optic)', choices=[(0, 'No'), (1, 'Yes')])
+    PaymentMethod_Electronic_check = forms.ChoiceField(label='Payment Method (Electronic Check)', choices=[(0, 'No'), (1, 'Yes')])
+    TechSupport_No = forms.ChoiceField(label='Tech Support (No)', choices=[(0, 'No'), (1, 'Yes')])
+    OnlineSecurity_No = forms.ChoiceField(label='Online Security (No)', choices=[(0, 'No'), (1, 'Yes')])
+    SeniorCitizen = forms.ChoiceField(label='Senior Citizen', choices=[(0, 'No'), (1, 'Yes')])
+    PaperlessBilling_Yes = forms.ChoiceField(label='Paperless Billing (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    StreamingTV_Yes = forms.ChoiceField(label='Streaming TV (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    StreamingMovies_Yes = forms.ChoiceField(label='Streaming Movies (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    Contract_Two_year = forms.ChoiceField(label='Contract (Two Year)', choices=[(0, 'No'), (1, 'Yes')])
+    InternetService_DSL = forms.ChoiceField(label='Internet Service (DSL)', choices=[(0, 'No'), (1, 'Yes')])
+    MultipleLines_No = forms.ChoiceField(label='Multiple Lines (No)', choices=[(0, 'No'), (1, 'Yes')])
+    PaperlessBilling_No = forms.ChoiceField(label='Paperless Billing (No)', choices=[(0, 'No'), (1, 'Yes')])
+    PaymentMethod_Credit_card = forms.ChoiceField(label='Payment Method (Credit Card)', choices=[(0, 'No'), (1, 'Yes')])
+    TechSupport_Yes = forms.ChoiceField(label='Tech Support (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    OnlineSecurity_Yes = forms.ChoiceField(label='Online Security (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    PhoneService_Yes = forms.ChoiceField(label='Phone Service (Yes)', choices=[(0, 'No'), (1, 'Yes')])
+    Dependents_Yes = forms.ChoiceField(label='Dependents (Yes)', choices=[(0, 'No'), (1, 'Yes')])

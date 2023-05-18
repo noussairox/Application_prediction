@@ -17,6 +17,9 @@ urlpatterns = [
     path('telecommunication',views.telecommunication,name="telecommunication"),
     path('signup',views.signup,name='signup'),
     path('prediction',views.prediction_view,name='prediction_view'),
+    path('churnprediction', views.churn_prediction_view, name='churn_prediction_view'),
+    path('blog',views.blog,name="blog"),
+    path('article/<slug:slug>/', views.ArticleDetailView.as_view(), name='article'),
 
 
 
