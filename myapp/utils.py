@@ -4,6 +4,7 @@ import os
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from .models import Prediction
 
 # Définir le chemin vers le dossier contenant les modèles
 MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Models')
@@ -65,6 +66,43 @@ def predict(form_data):
         round(KNeighborsRegressor_model.predict([car])[0], 2),
         round(DecisionTreeRegressor_model.predict([car])[0], 2)
     ]
+
+    # Enregistrer les prédictions dans la base de données
+    prediction = Prediction.objects.create(
+        price_model1=predictions[0],
+        price_model2=predictions[1],
+        price_model3=predictions[2],
+        Marque = form_data.get('Marque'),
+        Modele = form_data.get('Modele'),
+        Type_de_carburant = form_data.get('Type_de_carburant'),
+        Annee_Modele = form_data.get('Annee_Modele'),
+        Puissance_fiscale = form_data.get('Puissance_fiscale'),
+        Kilometrage = form_data.get('Kilometrage'),
+        etat = form_data.get('etat'),
+        Boite_de_vitesses = form_data.get('Boite_de_vitesses'),
+        Nombre_de_portes = form_data.get('Nombre_de_portes'),
+        Origine = form_data.get('Origine'),
+        Premiere_main = form_data.get('Premiere_main'),
+        Jantes_aluminium=int(form_data.get('Jantes_aluminium', False)),
+        Airbags=int(form_data.get('Airbags', False)),
+        Climatisation=int(form_data.get('Climatisation', False)),
+        Systeme_de_navigation_GPS=int(form_data.get('Systeme_de_navigation_GPS', False)),
+        Toit_ouvrant=int(form_data.get('Toit_ouvrant', False)),
+        Sieges_cuir=int(form_data.get('Sieges_cuir', False)),
+        Radar_de_recul=int(form_data.get('Radar_de_recul', False)),
+        Camera_de_recul=int(form_data.get('Camera_de_recul', False)),
+        Vitres_electriques=int(form_data.get('Vitres_electriques', False)),
+        ABS=int(form_data.get('ABS', False)),
+        ESP=int(form_data.get('ESP', False)),
+        Regulateur_de_vitesse=int(form_data.get('Regulateur_de_vitesse', False)),
+        Limiteur_de_vitesse=int(form_data.get('Limiteur_de_vitesse', False)),
+        CD_MP3_Bluetooth=int(form_data.get('CD_MP3_Bluetooth', False)),
+        Ordinateur_de_bord=int(form_data.get('Ordinateur_de_bord', False)),
+        Verrouillage_centralise_a_distance=int(form_data.get('Verrouillage_centralise_a_distance', False)),
+
+
+
+    )
 
     return predictions
 

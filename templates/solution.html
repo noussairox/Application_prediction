@@ -15,42 +15,30 @@
 
     <!-- ======= Solution Section ======= -->
     <section class="solutions">
-        <div class="container">
-          <h2 class="text-center mb-5">Nos Solutions</h2>
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <div class="solution-card">
-                <div class="row align-items-center">
-                  <div class="col-md-4">
-                    <img src="https://via.placeholder.com/200x200" alt="Solution 1" class="img-fluid">
-                  </div>
-                  <div class="col-md-8">
-                    <h3 class="solution-title">Solution 1</h3>
-                    <p class="solution-date">Ajouté le 9 Mai 2023</p>
-                    <p class="solution-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed nulla a massa lobortis bibendum. Sed auctor, velit ac consequat blandit, metus nunc facilisis libero, eu tempor nulla sapien et odio.</p>
-                    <a href="#" class="btn btn-primary solution-link">En savoir plus</a>
-                  </div>
+      <div class="container">
+        <h2 class="text-center mb-5">Nos Solutions</h2>
+        <div class="row">
+          {% for solution in solutions %}
+          <div class="col-md-6 mb-4">
+            <div class="solution-card h-100">
+              <div class="row align-items-center">
+                <div class="col-md-4">
+                  <img src="{{ solution.image.url }}" alt="{{ solution.nom }}" class="img-fluid">
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="solution-card">
-                <div class="row align-items-center">
-                  <div class="col-md-4 order-md-2">
-                    <img src="https://via.placeholder.com/200x200" alt="Solution 2" class="img-fluid">
-                  </div>
-                  <div class="col-md-8 order-md-1">
-                    <h3 class="solution-title">Solution 2</h3>
-                    <p class="solution-date">Ajouté le 8 Mai 2023</p>
-                    <p class="solution-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed nulla a massa lobortis bibendum. Sed auctor, velit ac consequat blandit, metus nunc facilisis libero, eu tempor nulla sapien et odio.</p>
-                    <a href="#" class="btn btn-primary solution-link">En savoir plus</a>
-                  </div>
+                <div class="col-md-8">
+                  <h3 class="solution-title">{{ solution.nom }}</h3>
+                  <p class="solution-date">Ajouté le {{ solution.date_ajout|date:"j F Y" }}</p>
+                  <p class="solution-description">{{ solution.description }}</p>
+                  <a href="{{ solution.link }}" class="btn btn-primary solution-link">En savoir plus</a>
                 </div>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-      </section>
+      </div>
+    </section>
+    
       
       <!-- End Solution Section -->
 

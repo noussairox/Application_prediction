@@ -53,13 +53,13 @@
           <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'myapp:index' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Prédiction de prix d'occassion</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'myapp:prediction_view' %}">Prédiction de prix d'occassion</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Prédiction de désabonnement des client</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'myapp:churn_prediction_view' %}">Prédiction de désabonnement des client</a>
               </li>
             </ul>
             <div class="navbar-nav">
@@ -68,6 +68,7 @@
               <li class="nav-item">
                 <a class="nav-link btn btn-primary modal-fullscreen-lg-down" href="{% url 'logout' %}">Logout</a>
               </li>
+              <a class="nav-link btn btn-secondary modal-fullscreen-lg-down" href="{% url 'change_password' %}">Change Password</a>
             </div>
           </div>
         </div>

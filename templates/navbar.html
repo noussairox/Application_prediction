@@ -2,9 +2,7 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><i class="bi bi-code"></i><a href="index.html">Ai Solution</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <h1 class="logo me-auto"><i class="bi bi-code"></i><a href="{% url 'myapp:index' %}">Ai Solution</a></h1>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -23,7 +21,7 @@
               <a class="dropdown-item" href="{% url 'myapp:telecommunication' %}">désabonnement des télécommunications .</a>
             </div>
           </li>
-          <li><a href="pricing.html">Blog</a></li>
+          <li><a href="{% url 'myapp:blog' %}">Blog</a></li>
           <li><a href="{% url 'myapp:avis' %}">Avis</a></li>
 
           <li><a href="{% url 'myapp:contact' %}">Contact</a></li>

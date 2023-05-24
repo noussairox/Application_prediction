@@ -5,11 +5,13 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm,ChurnPredictionForm
 from django.urls import reverse
 from django.contrib.auth.views import PasswordResetConfirmView
-from .models import Competance,Avis,Article
+from .models import Competance,Avis,Article,Solution,PredictionChurn
 from .utils import predict,make_churn_prediction
 from django.views.generic import DetailView
 from django.db.models import Count
-
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.contrib import messages
 
 # Create your views here.
 def  index(request):
@@ -31,7 +33,8 @@ def service(request):
 
 
 def solution(request):
-    return render(request, "solution.html")
+    context = {'solutions':Solution.objects.all()}
+    return render(request, "solution.html",context)
 
 def avis(request):
     context = {'avis':Avis.objects.all()}
@@ -49,7 +52,8 @@ def ecrireavis(request):
 
 
 def contact(request):
-    return render(request,"contact.html")
+    
+    return render(request, 'contact.html')
 
 def voiture(request):
     return render(request,"graph/voiture.html")
@@ -70,6 +74,7 @@ def signup(request):
 
     return render(request, 'signup.html', {"form": form})
 
+@login_required
 def prediction_view(request):
     if request.method == 'POST':
         form = PredictionForm(request.POST)
@@ -83,7 +88,7 @@ def prediction_view(request):
 
     return render(request, 'pred/predict.html', {'form': form})
 
-
+@login_required
 def churn_prediction_view(request):
     if request.method == 'POST':
         form = ChurnPredictionForm(request.POST)
@@ -116,6 +121,33 @@ def churn_prediction_view(request):
 
             # Appeler la fonction de prédiction
             prediction_lr, prediction_rf, prediction_svm = make_churn_prediction(input_values)
+
+            # Enregistrer les prédictions dans la base de données
+            prediction = PredictionChurn.objects.create(
+                TotalCharges=data['TotalCharges'],
+                tenure=data['tenure'],
+                Contract_Month_to_month=data['Contract_Month_to_month'],
+                InternetService_Fiber_optic=data['InternetService_Fiber_optic'],
+                PaymentMethod_Electronic_check=data['PaymentMethod_Electronic_check'],
+                TechSupport_No=data['TechSupport_No'],
+                OnlineSecurity_No=data['OnlineSecurity_No'],
+                SeniorCitizen=data['SeniorCitizen'],
+                PaperlessBilling_Yes=data['PaperlessBilling_Yes'],
+                StreamingTV_Yes=data['StreamingTV_Yes'],
+                StreamingMovies_Yes=data['StreamingMovies_Yes'],
+                Contract_Two_year=data['Contract_Two_year'],
+                InternetService_DSL=data['InternetService_DSL'],
+                MultipleLines_No=data['MultipleLines_No'],
+                PaperlessBilling_No=data['PaperlessBilling_No'],
+                PaymentMethod_Credit_card=data['PaymentMethod_Credit_card'],
+                TechSupport_Yes=data['TechSupport_Yes'],
+                OnlineSecurity_Yes=data['OnlineSecurity_Yes'],
+                PhoneService_Yes=data['PhoneService_Yes'],
+                Dependents_Yes=data['Dependents_Yes'],
+                prediction_lr=prediction_lr,
+                prediction_rf=prediction_rf,
+                prediction_svm=prediction_svm
+            )
 
             # Préparer les données à afficher dans le template
             context = {
