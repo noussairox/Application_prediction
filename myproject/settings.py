@@ -122,7 +122,7 @@ STATICFILES_DIRS = [
 MEDIA_ROOT ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
-LOGIN_REDIRECT_URL = "myapp:index"
+LOGIN_REDIRECT_URL = "myapp:prediction_view"
 LOGOUT_REDIRECT_URL = "myapp:signup"
 LOGIN_URL = "login"
 
